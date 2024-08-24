@@ -16,11 +16,12 @@
     <div id="winrate">pie chart</div>
     <div>
       <ul id="opponents">
-        <li>place holder 1</li>
-        <li>place holder 2</li>
-        <li>place holder 3</li>
+        <% for ( let i = 0; i < opponents.length; i++) { %>
+          <% console.log(i); %>
+          <%- include('opponent', {opponent: opponents[i]}); %>
+        <% }; %>
       </ul>
-      <a href="new-fencer.html" class="button">Add a New Opponent!</a>
+      <a href="/new-fencer" class="button">Add a New Opponent!</a>
       <a href="new-bout.html" class="button">Add a New Bout!</a>
     </div>
   </div>
