@@ -14,19 +14,17 @@ app.use(express.static(assestsPath));
 
 app.use(express.urlencoded({ extended: false}));
 
-let opponents;
+app.get("/", async (req, res) => {
 
-app.use((req, res, next) => {
-  opponents = fencerController.getFencers(req, res, next);
-
-  next();
-})
-
-app.get("/", (req, res) => {
-  // const opponents = fencerController.getFencers(req, res);
+  try {
+  const opponents = await fencerController.getFencers();
+  // const opponents = [    {lastnames: "test1"}  ];
   console.log(opponents);
 
   res.render("index", {opponents: opponents});
+  } catch (e) {
+    console.log(error);
+  }
 });
 
 app.get("/new-fencer", (req, res) => {

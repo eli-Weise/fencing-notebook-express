@@ -1,11 +1,12 @@
 const db = require("../db/queries");
 
-async function getFencers(req, res, next) {
+async function getFencers() {
+
   const lastnames = await db.getAllFencers();
-  console.log("Lastnames: ", lastnames);
+  // console.log("Lastnames: ", lastnames);
   // res.send("Lastnames: " +lastnames.map(fencer => fencer.lastname).join(", "));
   return lastnames;
-  next();
+  // next();
 }
 
 async function createFencerPost(req, res) {
