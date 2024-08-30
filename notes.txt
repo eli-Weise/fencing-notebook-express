@@ -1,0 +1,3 @@
+max char size for text fields
+add enums to fencers table
+Change year on fencer form to be rating

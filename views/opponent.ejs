@@ -1,1 +1,8 @@
-<li><%= opponent %></li>
+<!-- <li><%= opponent.lastname.toUpperCase() + ", " + opponent.firstname %></li> -->
+
+
+<li>
+  <a href="<%= '/opponent/' + opponent.id %>">
+    <span> <%= opponent.lastname.toUpperCase() + ", " + opponent.firstname %></span>
+  </a>
+</li>

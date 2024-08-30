@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
 
   res.render("index", {opponents: opponents});
   } catch (e) {
-    console.log(error);
+    console.log(e);
   }
 });
 
@@ -37,6 +37,20 @@ app.post("/new-fencer", (req, res) => {
   // res.redirect("/");
   fencerController.createFencerPost(req, res);
 })
+
+app.get("/opponent/:id", async (req, res) => {
+  console.log(req.params);
+
+  try {
+    const opponentReq = await fencerController.getFencer(req.params.id);
+    const opponent = (opponentReq.rows)[0];
+    console.log(opponent);
+    res.render("oppo-stats", {opponent: opponent});
+  } catch (e) {
+    console.log(e);
+  }
+  
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`My first Express app - listening on port ${PORT}!`));

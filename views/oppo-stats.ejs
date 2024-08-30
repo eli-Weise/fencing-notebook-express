@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>opponent page | <%= opponent.lastname %></title>
+</head>
+<body>
+  <h1><%= opponent.lastname.toUpperCase() + ", " + opponent.firstname %></h1>
+  <ul>
+    <li><%= opponent.rating + opponent.year %></li>
+    <li><%= opponent.hand %></li>
+    <li><%= opponent.grip %></li>
+    <li><%= opponent.height %></li>
+    <li><%= opponent.notes %></li>
+  </ul>
+</body>
+</html>

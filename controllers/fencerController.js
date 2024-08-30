@@ -2,21 +2,36 @@ const db = require("../db/queries");
 
 async function getFencers() {
 
-  const lastnames = await db.getAllFencers();
+  const fencers = await db.getAllFencers();
   // console.log("Lastnames: ", lastnames);
   // res.send("Lastnames: " +lastnames.map(fencer => fencer.lastname).join(", "));
-  return lastnames;
+  return fencers;
   // next();
 }
 
+async function getFencer(id) {
+  const fencer = await db.getFencer(id);
+  return fencer;
+}
+
 async function createFencerPost(req, res) {
-  const lastname = req.body.last_name;
-  console.log(lastname);
-  await db.insertFencer(lastname);
+  const body = req.body;
+
+  const firstname = body.first_name;
+  const lastname = body.last_name;
+  const rating = body.rating;
+  const hand = body.hand;
+  const grip = body.grip;
+  const ratingyear = body.ry;
+  const height = body.height;
+  const notes = body.notes;
+
+  await db.insertFencer(firstname, lastname, rating, ratingyear, hand, grip, height, notes);
   res.redirect("/");
 }
 
 module.exports = {
   getFencers,
+  getFencer,
   createFencerPost
 };
