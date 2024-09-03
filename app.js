@@ -42,8 +42,8 @@ app.get("/opponent/:id", async (req, res) => {
   console.log(req.params);
 
   try {
-    const opponentReq = await fencerController.getFencer(req.params.id);
-    const opponent = (opponentReq.rows)[0];
+    const opponent = await fencerController.getFencer(req.params.id);
+    // const opponent = (opponentReq.rows)[0];
     console.log(opponent);
     res.render("oppo-stats", {opponent: opponent});
   } catch (e) {
@@ -51,6 +51,11 @@ app.get("/opponent/:id", async (req, res) => {
   }
   
 });
+
+app.get("/edit/:id", async (req, res) => {
+
+    res.render("edit-fencer");
+})
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`My first Express app - listening on port ${PORT}!`));

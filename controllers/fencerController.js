@@ -10,7 +10,8 @@ async function getFencers() {
 }
 
 async function getFencer(id) {
-  const fencer = await db.getFencer(id);
+  const fencerFull = await db.getFencer(id);
+  const fencer = (fencerFull.rows)[0];
   return fencer;
 }
 
