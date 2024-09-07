@@ -8,9 +8,13 @@ const grip = document.querySelector("[name='grip']");
 const ratingYear = document.querySelector("#ry");
 const height = document.querySelector("#height");
 const notes = document.querySelector("#notes");
+console.log("first call");
 
 async function edit(id){
+  console.log("works0");
   const fencer = await fencerController.getFencer(id);
+
+  console.log("works1");
 
   firstName.value = fencer.firstname;
   lastName.value = fencer.lastname;

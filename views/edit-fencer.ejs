@@ -56,8 +56,44 @@
     <textarea id="notes" name="notes"></textarea>
     <button type="submit" id="submit">Submit</button>
   </form>
-  <script src="/public/scripts/edit-fencer.js" type="text/javascript"></script>
-  <script>edit(id);</script>
+  <!-- <script src="/public/scripts/edit-fencer.js" type="text/javascript"></script> -->
+  <!-- <script>edit(id);</script> -->
+  <script type="text/javascript">
+
+    const fencer = <%- JSON.stringify(fencer) %>;
+
+    const firstName = document.querySelector("#first_name");
+    const lastName = document.querySelector("#last_name");
+    const rating = document.querySelector("#rating");
+    // const hand = document.querySelector("[name='hand']");
+    // const grip = document.querySelector("[name='grip']");
+    const ratingYear = document.querySelector("#ry");
+    const height = document.querySelector("#height");
+    const notes = document.querySelector("#notes");
+
+    firstName.value = fencer.firstname;
+    lastName.value = fencer.lastname;
+    rating.value = fencer.rating;
+    ratingYear.value = fencer.year;
+    // hand.value = fencer.hand;
+    // grip.value = fencer.grip;
+    height.value = fencer.height;
+    notes.value = fencer.notes;
+
+    const handRadios = document.querySelectorAll("[name='hand']");
+    handRadios.forEach(radio => {
+      if (radio.value === fencer.hand) {
+        radio.checked = true;
+      }
+    });
+
+    const gripCheckboxes = document.querySelectorAll("[name='grip']");
+    gripCheckboxes.forEach(checkbox => {
+      if (fencer.grip.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
+  </script>
 </body>
 
 </html>

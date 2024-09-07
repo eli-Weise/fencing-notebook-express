@@ -54,7 +54,12 @@ app.get("/opponent/:id", async (req, res) => {
 
 app.get("/edit/:id", async (req, res) => {
 
-    res.render("edit-fencer");
+  try {
+    const fencer = await fencerController.getFencer(req.params.id);
+    res.render("edit-fencer", {fencer: fencer});
+  } catch (e) {
+    console.log(e);
+  }
 })
 
 const PORT = process.env.PORT;
