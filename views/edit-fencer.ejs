@@ -54,6 +54,8 @@
 
     <label for="notes">Initial Notes</label>
     <textarea id="notes" name="notes"></textarea>
+
+    <input type="hidden" id="id" name="id" value="">
     <button type="submit" id="submit">Submit</button>
   </form>
   <!-- <script src="/public/scripts/edit-fencer.js" type="text/javascript"></script> -->
@@ -70,6 +72,7 @@
     const ratingYear = document.querySelector("#ry");
     const height = document.querySelector("#height");
     const notes = document.querySelector("#notes");
+    const id = document.querySelector("#id");
 
     firstName.value = fencer.firstname;
     lastName.value = fencer.lastname;
@@ -79,6 +82,7 @@
     // grip.value = fencer.grip;
     height.value = fencer.height;
     notes.value = fencer.notes;
+    id.value = fencer.id;
 
     const handRadios = document.querySelectorAll("[name='hand']");
     handRadios.forEach(radio => {

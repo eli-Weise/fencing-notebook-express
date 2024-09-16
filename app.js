@@ -62,5 +62,11 @@ app.get("/edit/:id", async (req, res) => {
   }
 })
 
+app.post("/edit-fencer", (req, res) => {
+
+
+  fencerController.editFencerPost(req, res);
+})
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`My first Express app - listening on port ${PORT}!`));

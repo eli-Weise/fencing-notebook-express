@@ -31,8 +31,27 @@ async function createFencerPost(req, res) {
   res.redirect("/");
 }
 
+async function editFencerPost(req, res) {
+  const body = req.body;
+
+  const firstname = body.first_name;
+  const lastname = body.last_name;
+  const rating = body.rating;
+  const hand = body.hand;
+  const grip = body.grip;
+  const ratingyear = body.ry;
+  const height = body.height;
+  const notes = body.notes;
+
+  const id = body.id;
+
+  await db.editFencer(id, firstname, lastname, rating, ratingyear, hand, grip, height, notes);
+  res.redirect("/opponent/" + id);
+}
+
 module.exports = {
   getFencers,
   getFencer,
-  createFencerPost
+  createFencerPost,
+  editFencerPost
 };

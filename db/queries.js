@@ -17,8 +17,18 @@ async function insertFencer(firstname, lastname, rating, ry, hand, grip, height,
   await pool.query(text, value);
 }
 
+async function editFencer(id, firstname, lastname, rating, ry, hand, grip, height, notes) {
+  const text = `UPDATE opponents
+                SET firstname=$1, lastname=$2, rating=$3, year=$4, hand=$5, grip=$6, height=$7, notes=$8
+                WHERE id=$9`;
+  const value = [firstname, lastname, rating, ry, hand, grip, height, notes, id];
+
+  await pool.query(text, value);
+}
+
 module.exports = {
   getAllFencers,
   getFencer,
-  insertFencer
+  insertFencer,
+  editFencer
 };
