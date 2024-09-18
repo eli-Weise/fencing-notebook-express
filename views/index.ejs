@@ -17,10 +17,10 @@
     <div>
       <ul id="opponents">
         <% for ( let i = 0; i < opponents.length; i++) { %>
-          <%- include('opponent', {opponent: opponents[i]}); %>
+          <%- include('fencer/opponent', {opponent: opponents[i]}); %>
         <% }; %>
       </ul>
-      <a href="/new-fencer" class="button">Add a New Opponent!</a>
+      <a href="/fencer/new" class="button">Add a New Opponent!</a>
       <a href="new-bout.html" class="button">Add a New Bout!</a>
     </div>
   </div>

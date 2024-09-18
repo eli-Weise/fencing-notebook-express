@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a bout</title>
+</head>
+
+<body>
+  <h1>Add a bout</h1>
+  <form action="bout/new" method="post">
+    <label for="opponents">Opponents</label>
+    <select id="opponents" name="opponents" required>
+      <option value="add-an-opponent">Add an Opponent</option>
+    </select>
+    <fieldset>
+      <legend>Final Score</legend>
+
+      <label for="my-score">My Score</label>
+      <input type="number" id="my_score" name="my_score" min="0" max="15" step="1" required>
+
+      <label for="opponent-score">Opponent Score</label>
+      <input type="number" id="opponent_score" name="opponent_score" min="0" max="15" step="1" required>
+
+      <div>Winner (only if scores are tied):</div>
+      <label for="my-win">I won:</label>
+      <input type="radio" id="my_win" name="winner" value="my-win">
+
+      <label for="opponent-win">Opponent won:</label>
+      <input type="radio" id="opponent_win" name="winner" value="opponent-win">
+    </fieldset>
+    <fieldset>
+      <legend>Cards</legend>
+
+      <label>My Cards:</label>
+
+      <label for="yellow">Yellow:</label>
+      <input type="checkbox" id="my_yellow" name="my_cards" value="yellow">
+      
+      <label for="red">Red:</label>
+      <input type="number" id="my_red" name="my_red" min="0" max="15" step="1">
+
+      <label for="black">Black:</label>
+      <input type="checkbox" id="my_black" name="my_cards" value="black">
+
+      <label>Opponent Cards:</label>
+
+      <label for="yellow">Yellow:</label>
+      <input type="checkbox" id="op_yellow" name="op_cards" value="yellow">
+      
+      <label for="red">Red:</label>
+      <input type="number" id="op_red" name="red" min="0" max="15" step="1">
+
+      <label for="black">Black:</label>
+      <input type="checkbox" id="op_black" name="op_cards" value="black">
+
+      <label>P-Cards:</label>
+
+      <label for="p-yellow">P-Yellow</label>
+      <input type="radio" id="p_yellow" name="p_cards" value="p-yellow">
+
+      <label for="p-red">P-Red</label>
+      <input type="radio" id="p_red" name="p_cards" value="p-red">
+
+      <label for="p-black">P-Black</label>
+      <input type="radio" id="p_black" name="p_cards" value="p-black">
+    </fieldset>
+    <label for="notes">General Notes</label>
+    <textarea id="notes" name="notes"></textarea>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+
+</html>

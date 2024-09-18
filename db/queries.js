@@ -33,10 +33,33 @@ async function deleteFencer(id) {
   await pool.query(text, value);
 }
 
+//bouts
+async function getAllBouts() {
+  const {rows} = await pool.query("SELECT * FROM bouts");
+  return rows;
+}
+
+async function getBout(id) {
+  const row = await pool.query("SELECT * FROM bouts WHERE id=$1", [id]);
+  return row;
+}
+
+async function insertBout(myscore, opscore, winner, mycards, myred, opcards, opred, pcards, notes) {
+  const text = `INSERT INTO bouts
+                (myscore, opscore, winner, mycards, myred, opcards, opred, pcards, notes)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+  const value = [myscore, opscore, winner, mycards, myred, opcards, opred, pcards, notes];
+
+  await pool.query[text, value];
+}
+
 module.exports = {
   getAllFencers,
   getFencer,
   insertFencer,
   editFencer,
-  deleteFencer
+  deleteFencer,
+  getAllBouts,
+  getBout,
+  insertBout
 };

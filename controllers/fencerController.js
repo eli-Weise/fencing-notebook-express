@@ -1,12 +1,8 @@
 const db = require("../db/queries");
 
 async function getFencers() {
-
   const fencers = await db.getAllFencers();
-  // console.log("Lastnames: ", lastnames);
-  // res.send("Lastnames: " +lastnames.map(fencer => fencer.lastname).join(", "));
   return fencers;
-  // next();
 }
 
 async function getFencer(id) {
@@ -46,7 +42,7 @@ async function editFencerPost(req, res) {
   const id = body.id;
 
   await db.editFencer(id, firstname, lastname, rating, ratingyear, hand, grip, height, notes);
-  res.redirect("/opponent/" + id);
+  res.redirect("/fencer/" + id);
 }
 
 async function deleteFencer(id) {
