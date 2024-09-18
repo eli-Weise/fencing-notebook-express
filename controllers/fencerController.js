@@ -49,9 +49,15 @@ async function editFencerPost(req, res) {
   res.redirect("/opponent/" + id);
 }
 
+async function deleteFencer(id) {
+  await db.deleteFencer(id);
+  // res.redirect("/")
+}
+
 module.exports = {
   getFencers,
   getFencer,
   createFencerPost,
-  editFencerPost
+  editFencerPost,
+  deleteFencer
 };

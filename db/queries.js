@@ -26,9 +26,17 @@ async function editFencer(id, firstname, lastname, rating, ry, hand, grip, heigh
   await pool.query(text, value);
 }
 
+async function deleteFencer(id) {
+  const text = "DELETE FROM opponents WHERE id=$1";
+  const value = [id];
+
+  await pool.query(text, value);
+}
+
 module.exports = {
   getAllFencers,
   getFencer,
   insertFencer,
-  editFencer
+  editFencer,
+  deleteFencer
 };

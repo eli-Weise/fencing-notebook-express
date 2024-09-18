@@ -68,5 +68,11 @@ app.post("/edit-fencer", (req, res) => {
   fencerController.editFencerPost(req, res);
 })
 
+app.get("/delete/:id", (req, res) => {
+
+  fencerController.deleteFencer(req.params.id);
+  res.redirect("/");
+})
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`My first Express app - listening on port ${PORT}!`));
