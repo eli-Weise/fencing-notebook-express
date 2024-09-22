@@ -16,15 +16,18 @@ app.use(express.static(assestsPath));
 app.use(express.urlencoded({ extended: false}));
 
 const fencerController = require("./controllers/fencerController");
+const boutController = require("./controllers/boutController");
 
 app.get("/", async (req, res) => {
 
   try {
   const opponents = await fencerController.getFencers();
+  const bouts = await boutController.getAllBouts();
   // const opponents = [    {lastnames: "test1"}  ];
   console.log(opponents);
+  console.log(bouts);
 
-  res.render("index", {opponents: opponents});
+  res.render("index", {opponents: opponents, bouts: bouts});
   } catch (e) {
     console.log(e);
   }

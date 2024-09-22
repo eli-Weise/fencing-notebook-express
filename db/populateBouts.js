@@ -6,7 +6,7 @@ const { Client } = require("pg");
 const SQL = `
 
 CREATE TYPE winner AS ENUM ('my-win', 'opponent-win', 'empty');
-CREATE TYPE card as ENUM ('yellow', black');
+CREATE TYPE card as ENUM ('yellow', 'black');
 CREATE TYPE pcard as ENUM ('p-yellow', 'p-red', 'p-black');
 
 CREATE TABLE IF NOT EXISTS bouts (
@@ -14,11 +14,11 @@ CREATE TABLE IF NOT EXISTS bouts (
   myscore INT,
   opscore INT,
   winner winner DEFAULT 'empty',
-  mycards card,
+  mycards card[],
   mrred INT,
-  opcards card,
+  opcards card[],
   opred INT,
-  pcards pcards,
+  pcards pcard,
   notes TEXT
 );
 `
