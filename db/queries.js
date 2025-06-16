@@ -56,6 +56,15 @@ async function insertBout(myscore, opscore, winner, mycards, myred, opcards, opr
   console.log("query worked?");
 }
 
+async function editBout(id, opponent, myscore, opscore, winner, mycards, mrred, opcards, opred, pcards, notes) {
+  const text = `UPDATE bouts
+                SET opponent=$1, myscore=$2, opscore=$3, winner=$4, mycards=$5, mrred=$6, opcards=$7, opred=$8, pcards=$9, notes=$10
+                WHERE id=$11`;
+  const value = [opponent, myscore, opscore, winner, mycards, mrred, opcards, opred, pcards, notes, id];
+
+  await pool.query(text, value);
+}
+
 async function deleteBout(id) {
   const text = "DELETE FROM bouts WHERE id=$1";
   const value = [id];
@@ -72,5 +81,6 @@ module.exports = {
   getAllBouts,
   getBout,
   insertBout,
+  editBout,
   deleteBout
 };

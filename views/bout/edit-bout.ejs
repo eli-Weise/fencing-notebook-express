@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add a bout</title>
+  <title>Edit bout</title>
 </head>
 
 <body>
   <h1>Add a bout</h1>
-  <form action="/bout/new" method="post">
+  <form action="/bout/edit" method="post" id="edit-a-bout">
     <label for="opponents">Opponents</label>
     <select id="opponents" name="opponents" required>
       <option value="add-an-opponent">Add an Opponent</option>
@@ -71,9 +71,60 @@
     </fieldset>
     <label for="notes">General Notes</label>
     <textarea id="notes" name="notes"></textarea>
+
+    <input type="hidden" id="id" name="id" value="">
     <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
   </form>
+
+  <script type="text/javascript">
+
+    const bout = <%- JSON.stringify(bout) %>;
+
+    const opponent = document.querySelector("#opponents");
+    const myScore = document.querySelector("#my_score");
+    const opponentScore = document.querySelector("#opponent_score");
+    const myRed = document.querySelector("#my_red");
+    const opponentRed = document.querySelector("#op_red");
+    const notes = document.querySelector("notes");
+    const id = document.querySelector("#id");
+
+    opponent.value = bout.opponent;
+    myScore.value = bout.myscore;
+    opponentScore.value = bout.opscore;
+    myRed.value = bout.mrred;
+    opponentRed.value = bout.opred;
+    notes.value = bout.notes;
+    id.value = bout.id;
+
+    const winRadios = document.querySelectorAll("[name='winner']");
+    winRadios.forEach(radio => {
+      if (radio.value === bout.winner) {
+        radio.checked = true;
+      }
+    });
+
+    const pRadios = document.querySelectorAll("[name='p_cards']");
+    pRadios.forEach(radio => {
+      if (radio.value === bout.pcards) {
+        radio.checked = true;
+      }
+    });
+
+    const mycardCheckboxes = document.querySelectorAll("[name='my_cards']");
+    mycardCheckboxes.forEach(checkbox => {
+      if (bout.mycards.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
+
+    const opcardCheckboxes = document.querySelectorAll("[name='op_cards']");
+    opcardCheckboxes.forEach(checkbox => {
+      if (bout.opcards.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
+
+  </script>
 </body>
 
 </html>

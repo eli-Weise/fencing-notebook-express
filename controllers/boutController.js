@@ -14,6 +14,8 @@ async function getBout(id) {
 async function createBoutPost(req, res){
   const body = req.body;
 
+  const opponent = body.opponents;
+
   const myscore = body.my_score ?? 0;
   const opscore = body.opponent_score ?? 0;
   const winner = body.winner ?? "empty";
@@ -31,6 +33,27 @@ async function createBoutPost(req, res){
   res.redirect("/");
 }
 
+async function editBoutPost(req, res) {
+  const body = req.body;
+
+  const opponent = body.opponents;
+
+  const myscore = body.my_score ?? 0;
+  const opscore = body.opponent_score ?? 0;
+  const winner = body.winner ?? "empty";
+  const mycards = body.my_cards ?? [];
+  const myred = body.my_red ?? 0;
+  const opcards = body.op_cards ?? [];
+  const opred = body.op_red ?? 0;
+  const pcards = body.p_cards;
+  const notes = body.notes ?? "";
+
+  const id = body.id;
+
+  await db.editBout(id, opponent, myscore, opscore, winner, mycards, myred, opcards, opred, pcards, notes);
+  res.redirect("/bout/" + id);
+}
+
 
 async function deleteBout(id) {
   await db.deleteBout(id);
@@ -40,5 +63,6 @@ module.exports = {
   getAllBouts,
   getBout,
   createBoutPost,
+  editBoutPost,
   deleteBout
 }

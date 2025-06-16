@@ -1,5 +1,12 @@
 max char size for text fields
-add enums to fencers table
-Change year on fencer form to be rating
 add default empty values to forms, sql fails otherwise
-Add array enums to sql table
+edit bouts
+add opponent id to bout
+add none option to radio buttons (or reset option)
+edit bout form not fully loading from database
+
+
+Done:
+  Change year on fencer form to be rating
+  add enums to fencers table
+  no longer need to add cards to new bout form
