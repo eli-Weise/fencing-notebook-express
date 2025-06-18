@@ -50,6 +50,9 @@ async function editBoutPost(req, res) {
 
   const id = body.id;
 
+  console.log("editBoutPost");
+  console.log(body);
+
   await db.editBout(id, opponent, myscore, opscore, winner, mycards, myred, opcards, opred, pcards, notes);
   res.redirect("/bout/" + id);
 }
