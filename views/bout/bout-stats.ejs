@@ -7,7 +7,12 @@
 <body>
   <h1><%= bout.myscore + " - " + bout.opscore %></h1>
   <ul>
-    <li><%= bout.opponent %></li>
+    <% for (let i =0; i < opponents.length; i++ ) { %>
+      <% if (opponents[i].id == bout.opponent) { %>
+        <%- include('../fencer/opponent', {opponent: opponents[i]}); %>
+      <% }; %>
+
+    <% }; %>
     <li><%= bout.notes %></li>
   </ul>
 

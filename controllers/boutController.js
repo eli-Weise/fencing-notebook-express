@@ -19,9 +19,15 @@ async function createBoutPost(req, res){
   const myscore = body.my_score ?? 0;
   const opscore = body.opponent_score ?? 0;
   const winner = body.winner ?? "empty";
-  const mycards = body.my_cards ?? [];
+  let mycards = body.my_cards;
+  if (!Array.isArray(mycards))  {
+    mycards = mycards ? [mycards] : [];
+  }
   const myred = body.my_red ?? 0;
-  const opcards = body.op_cards ?? [];
+  let opcards = body.op_cards;
+  if (!Array.isArray(opcards))  {
+    opcards = opcards ? [opcards] : [];
+  }
   const opred = body.op_red ?? 0;
   const pcards = body.p_cards;
   const notes = body.notes ?? "";
@@ -41,9 +47,15 @@ async function editBoutPost(req, res) {
   const myscore = body.my_score ?? 0;
   const opscore = body.opponent_score ?? 0;
   const winner = body.winner ?? "empty";
-  const mycards = body.my_cards ?? [];
+  let mycards = body.my_cards;
+  if (!Array.isArray(mycards))  {
+    mycards = mycards ? [mycards] : [];
+  }
   const myred = body.my_red ?? 0;
-  const opcards = body.op_cards ?? [];
+  let opcards = body.op_cards;
+  if (!Array.isArray(opcards))  {
+    opcards = opcards ? [opcards] : [];
+  }
   const opred = body.op_red ?? 0;
   const pcards = body.p_cards;
   const notes = body.notes ?? "";

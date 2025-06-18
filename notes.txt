@@ -1,12 +1,13 @@
 max char size for text fields
 add default empty values to forms, sql fails otherwise
-edit bouts
-add opponent id to bout
 add none option to radio buttons (or reset option)
-edit bout form not fully loading from database
+limit possible rating years
 
 
 Done:
   Change year on fencer form to be rating
   add enums to fencers table
   no longer need to add cards to new bout form
+  add opponent id to bout
+  edit bout form not fully loading from database - 6/18/2025
+  edit bouts - 6/18/2025

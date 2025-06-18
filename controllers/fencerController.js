@@ -1,5 +1,7 @@
 const db = require("../db/queries");
 
+const currYear = new Date().getFullYear;
+
 async function getFencers() {
   const fencers = await db.getAllFencers();
   return fencers;
@@ -14,12 +16,15 @@ async function getFencer(id) {
 async function createFencerPost(req, res) {
   const body = req.body;
 
-  const firstname = body.first_name;
-  const lastname = body.last_name;
-  const rating = body.rating;
+  const firstname = body.first_name ?? "";
+  const lastname = body.last_name ?? "";
+  const rating = (body.rating != "empty") ? body.rating : "U";
   const hand = body.hand;
-  const grip = body.grip;
-  const ratingyear = body.ry;
+  let grip = body.grip;
+  if (!Array.isArray(grip)) {
+    grip = grip ? [grip] : [];
+  }
+  const ratingyear = body.ry ?? currYear;
   const height = body.height;
   const notes = body.notes;
 

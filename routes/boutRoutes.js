@@ -25,8 +25,9 @@ boutRouter.get("/:id", async (req, res) => {
 
   try {
     const bout = await boutController.getBout(req.params.id);
+    const opponents = await fencerController.getFencers();
     console.log(bout);
-    res.render("bout/bout-stats", {bout: bout});
+    res.render("bout/bout-stats", {bout: bout, opponents: opponents});
   } catch (e) {
     console.log(e);
   }
